@@ -7,7 +7,7 @@ R::setup('mysql:host=localhost; dbname=wbackend','root', 'toor');
 function basic ()
 {
 	/**
-	* reorg code
+	* Re-organizing code
 	*/
 	class tableCreator
 	{
@@ -48,13 +48,6 @@ switch (strtolower(end($argv))) {
 		basic();
 		break;
 	case 'clean':
-		clean();
-		break;
-	
-	default:
-		# code...
-		break;
-}:
 		clean();
 		break;
 	
