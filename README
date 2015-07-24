@@ -1,0 +1,24 @@
+models (queries emulated through orm)
+- who is on air, and link the program [/radionow]
+- program (genre:text, time:tbd, description:text, djs:r1, last 5 shows: r2.) [/program/:id]
+	-- relationships: djs(link), last five shows(links/dates), 
+- article (content: html text, date:date, link to a view:text, author:r1) [/article/:id]
+	-- relationships: djs
+- djs (name: text) /* (is user currently) */ [/dj/:id]
+
+views
+- home page (shows articles paginated, who is on air, last 6 playlists, )
+- program (shows 'home>programs', and whole program model)
+
+
+many to many relationships in schedule: dj to program, 
+one to many: article to dj
+
+
+
+
+
+
+
+
+THINGS
