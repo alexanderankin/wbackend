@@ -11,19 +11,19 @@ function basic ()
 	*/
 	class ClassName
 	{
-		public OODBBean $djbean; //  might need a /** @var OODBBean*/
-		public OODBBean $program;
+		public $djbean; //  might need a /** @var OODBBEAN */
+		public $program;
 		public $ids;
-		function __construct(argument)
+		function __construct()
 		{
-			$this->$djbean = R::dispense('dj');
-			$this->$djbean->name = "First Dj";
-			$this->$program = R::dispense('program');
+			$this->djbean = R::dispense('dj');
+			$this->djbean->name = "First Dj";
+			$this->program = R::dispense('program');
 		}
 		public function store($value='')
 		{
-			$this->$ids['dj - '.$djbean->name] = R::store($this->$djbean);
-			$this->$ids['pr - '.$program->name] = R::store($this->$program);
+			$this->ids['dj - '.$this->djbean->name] = R::store($this->djbean);
+			$this->ids['pr - '.$this->program->name] = R::store($this->program);
 		}
 	}
 	// make a dj
@@ -32,7 +32,7 @@ function basic ()
 	// $firstdjbeanid = R::store($djbean);
 	// echo "\n\n\tThe created djbean has id $firstdjbeanid.\n\n";
 	$a = new ClassName();
-	$a->store;
+	$a->store();
 }
 function clean()
 {
@@ -43,6 +43,7 @@ function clean()
  */
 switch (strtolower(end($argv))) {
 	case 'basicsetup':
+	case 'basic':
 		basic();
 		break;
 	case 'clean':
