@@ -9,32 +9,33 @@ function basic ()
 	/**
 	* reorg code
 	*/
-	class ClassName
+	class tableCreator
 	{
-		public $djbean; //  might need a /** @var OODBBEAN */
-		public $program;
+		public $tables;
+		public $tableNames;
 		public $ids;
-		function __construct()
+		function __construct($tableNames = array('djs', 'programs'))
 		{
-			$this->djbean = R::dispense('dj');
-			$this->djbean->name = "First Dj";
-			$this->program = R::dispense('program');
+			// dispense beans
+			foreach ($tableNames as $value) {
+				$this->tables["$value"] = R::dispense("$value");
+			}
+			
+			// set some data
+			$this->tables['djs']->name = 'First Dj';
+			$this->tables['programs']->name = 'First Program';
+			$this->store();
 		}
-		public function store($value='')
+		public function store() // storing ids essentially just in case
 		{
-			$this->ids['dj - '.$this->djbean->name] = R::store($this->djbean);
-			$this->ids['pr - '.$this->program->name] = R::store($this->program);
+			foreach ($this->tables as $key => $value) {
+				$this->ids['bean - '.$key] = R::store($value);
+			}
 		}
 	}
-	// make a dj
-	// $djbean = R::dispense('dj');
-	// $djbean->name = "First Dj";
-	// $firstdjbeanid = R::store($djbean);
-	// echo "\n\n\tThe created djbean has id $firstdjbeanid.\n\n";
-	$a = new ClassName();
-	$a->store();
+	$a = new tableCreator();	
 }
-function clean()
+function clean ()
 {
 	R::nuke();
 }
@@ -47,6 +48,13 @@ switch (strtolower(end($argv))) {
 		basic();
 		break;
 	case 'clean':
+		clean();
+		break;
+	
+	default:
+		# code...
+		break;
+}:
 		clean();
 		break;
 	
