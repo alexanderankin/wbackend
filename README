@@ -31,3 +31,6 @@ THINGS (pre-existing)
 
 
 TODO: recover surpasshosting passwords
+
+Schema:
+tables: schedule, programs, djs, playlists (+ prog_djs, songs_playlists)
