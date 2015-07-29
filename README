@@ -30,7 +30,10 @@ THINGS (pre-existing)
 
 
 
-TODO: recover surpasshosting passwords
+
+TODO: 
+-  recover surpasshosting passwords
+-  cry.
 
 Schema:
 tables: schedule, programs, djs, playlists (+ prog_djs, songs_playlists)
