@@ -35,5 +35,13 @@ TODO:
 -  recover surpasshosting passwords
 -  cry.
 
-Schema:
-tables: schedule, programs, djs, playlists (+ prog_djs, songs_playlists)
+
+
+
+
+Schema (tables):
+	- Schedule
+	- Programs
+	- djs
+	- playlists (+ prog_djs, songs_playlists)
+	- songs_of_user (song name, artist, length, playlist_id) 
