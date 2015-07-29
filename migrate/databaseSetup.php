@@ -33,7 +33,7 @@ function basic ()
 			}
 		}
 	}
-	$a = new tableCreator();	
+	$a = new tableCreator(['djs', 'programs', '']);	
 }
 function clean ()
 {
