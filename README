@@ -21,4 +21,13 @@ one to many: article to dj
 
 
 
-THINGS
+THINGS (pre-existing)
+- home page (articles)
+- playlists of a show (/station/playlists)
+- playlists, last five (/station/playlists)
+- a playlist (a node)
+- programs (/station/programs)
+
+
+
+TODO: recover surpasshosting passwords
