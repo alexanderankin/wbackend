@@ -1,0 +1,18 @@
+Queries
+- SELECT * FROM `node` where `node`.type = 'station_playlist' ORDER BY `node`.changed DESC
+gets index of playlists
+
+
+single playlist (still need user date/time): "[{program.Title} with {DJs} playlist for {date}]\n By {user} on {date} - {time}"
+/**
+ *  Into The Fire with JoJo playlist for 08/05/2015
+ * 
+ *  By JoJo on Tue, 08/04/2015 - 4:36pm
+ * 
+ */
+- []
+SELECT * FROM `node` where `node`.type = 'station_playlist' AND `node`.nid = 38496 ORDER BY `node`.changed DESC
+- songs
+SELECT * FROM `station_playlist_track` WHERE `station_playlist_track`.nid = 38496 ORDER BY `station_playlist_track`.`weight` ASC
+- program
+SELECT * FROM `station_playlist` WHERE `station_playlist`.nid = 38496 ORDER BY `station_playlist`.timestamp DESC
