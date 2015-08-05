@@ -132,17 +132,22 @@ function scheduleNew()
 			}
 			
 			$timeSlotCounter = 0;
+			$timeSlotDayIndex = 0;
 			foreach ($this->timeSlotBeans as $key => $value) {
 
 				$value->start = (new DateTime("now", (new DateTimeZone('gmt'))))
 				->setTimeStamp($timeSlotCounter)
-				->format('H:i:s');
+				->format("$timeSlotDayIndex:H:i:s");
 				
 				$timeSlotCounter += 10800; // three hours
+				if ($timeSlotCounter % 86400 == 0) { // whole day
+					$timeSlotDayIndex += 1;
+				}
 				
 				$value->end = (new DateTime("now", (new DateTimeZone('gmt'))))
 				->setTimeStamp($timeSlotCounter)
-				->format('H:i:s');
+				->format("$timeSlotDayIndex:H:i:s");
+
 			}
 		}
 		public function store()
