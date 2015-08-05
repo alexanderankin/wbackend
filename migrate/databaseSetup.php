@@ -116,6 +116,46 @@ function basic ()
 	->lorem()
 	->store();	// see README
 }
+function scheduleNew()
+{
+	/**
+	* Copy schema from w_data_simple, with beans.
+	*/
+	class scheduleCreator
+	{
+		private $timeSlotBeans;
+		function __construct()
+		{
+			$tsCount = 56; // time slot count: actually 83, but if each 3 hrs, 56
+			for ($i=0; $i < $tsCount; $i++) { 
+				$this->timeSlotBeans[] = R::dispense('schedule');
+			}
+			
+			$timeSlotCounter = 0;
+			foreach ($this->timeSlotBeans as $key => $value) {
+
+				$value->start = (new DateTime("now", (new DateTimeZone('gmt'))))
+				->setTimeStamp($timeSlotCounter)
+				->format('H:i:s');
+				
+				$timeSlotCounter += 10800; // three hours
+				
+				$value->end = (new DateTime("now", (new DateTimeZone('gmt'))))
+				->setTimeStamp($timeSlotCounter)
+				->format('H:i:s');
+			}
+		}
+		public function store()
+		{
+			foreach ($this->timeSlotBeans as $key => $value) {
+				R::store($value);
+			}
+			return $this;
+		}
+	}
+	$a = (new scheduleCreator())
+	->store();
+}
 function clean ()
 {
 	R::nuke();
@@ -132,7 +172,10 @@ switch (strtolower(end($argv))) {
 	case 'nuke':
 		clean();
 		break;
-	
+	case 'sch':
+	case 'schnew':
+	case 'sn':
+		scheduleNew();
 	default:
 		# code...
 		break;
