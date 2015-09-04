@@ -46,3 +46,10 @@ Schema (tables):
 	- playlists (+ prog_djs, songs_playlists)
 	- songs_of_user (song name, artist, length, playlist_id) 
 		- considering doing this as one table for all songs
+
+
+
+
+
+
+!!!!
